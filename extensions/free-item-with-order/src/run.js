@@ -19,16 +19,18 @@ const EMPTY_DISCOUNT = {
  * @returns {FunctionRunResult}
  */
 export function run(input) {
-  const freeItemVariantId = "gid://shopify/ProductVariant/48040974025013";
+  const freeItemVariantHandle = "purple-owl-phone-case-gwp";
   const totalAmountForFreeItem = 50;
   const totalAmount = input.cart.cost.totalAmount.amount;
   const lineItems = input.cart.lines;
-  const isFreeItemInCart = lineItems.find(
-    (lineItem) => lineItem.merchandise.id == freeItemVariantId
+  const freeItemInCart = lineItems.find(
+    (lineItem) => lineItem.merchandise.product.handle == freeItemVariantHandle //&&
+    // lineItem.merchandise.id == freeItemVariantId
+    // && lineItem.isProductFree?.value == "true"
   );
   const isTotalAmountOk = totalAmount >= totalAmountForFreeItem;
 
-  if (isFreeItemInCart && isTotalAmountOk) {
+  if (freeItemInCart && isTotalAmountOk) {
     return {
       discountApplicationStrategy: DiscountApplicationStrategy.First,
       discounts: [
@@ -36,7 +38,7 @@ export function run(input) {
           targets: [
             {
               productVariant: {
-                id: freeItemVariantId,
+                id: freeItemInCart.merchandise.id,
               },
             },
           ],
