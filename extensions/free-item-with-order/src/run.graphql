@@ -6,9 +6,15 @@ query RunInput {
       }
     }
     lines {
+      # isProductFree: attribute(key: "_Free") {
+      #   value
+      # }
       merchandise {
         ... on ProductVariant {
           id
+          product {
+            handle
+          }
         }
       }
     }
