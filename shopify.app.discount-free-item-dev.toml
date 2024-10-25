@@ -2,6 +2,7 @@
 
 client_id = "a7d7fa9d2ae1758646fef26525725857"
 name = "Discount (free item) - dev"
+handle = "discount-free-item-dev"
 application_url = "https://shopify.dev/apps/default-app-home"
 embedded = true
 
