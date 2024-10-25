@@ -21,5 +21,5 @@ jobs:
           SHOPIFY_CLI_PARTNERS_TOKEN: ${{ secrets.SHOPIFY_CLI_PARTNERS_TOKEN }}
           COMMIT_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
           # .env content after a deploy
-          SHOPIFY_API_KEY: ${{ secrets.SHOPIFY_API_KEY_DEV }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_API_KEY_DEV }}
         run: npm run deploy -- -f --config "discount-free-item-dev" --source-control-url "$COMMIT_URL"
