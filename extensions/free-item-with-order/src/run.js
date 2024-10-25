@@ -32,7 +32,7 @@ export function run(input) {
 
   if (freeItemInCart && isTotalAmountOk) {
     return {
-      discountApplicationStrategy: DiscountApplicationStrategy.First,
+      discountApplicationStrategy: DiscountApplicationStrategy.All,
       discounts: [
         {
           targets: [
