@@ -10,7 +10,7 @@ import { DiscountApplicationStrategy } from "../generated/api";
  * @type {FunctionRunResult}
  */
 const EMPTY_DISCOUNT = {
-  discountApplicationStrategy: DiscountApplicationStrategy.All,
+  discountApplicationStrategy: DiscountApplicationStrategy.First,
   discounts: [],
 };
 
@@ -32,7 +32,7 @@ export function run(input) {
 
   if (freeItemInCart && isTotalAmountOk) {
     return {
-      discountApplicationStrategy: DiscountApplicationStrategy.All,
+      discountApplicationStrategy: DiscountApplicationStrategy.First,
       discounts: [
         {
           targets: [
